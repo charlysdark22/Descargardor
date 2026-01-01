@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visuales UCLV - Tu Biblioteca de Contenido</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles-extras.css">
+</head>
+<body>
+    <!-- Main Container -->
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <span class="logo-icon">📦</span>
+                    <span class="logo-text">Visuales UCLV</span>
+                </div>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <div class="nav-section-title">Categorías</div>
+                    <div id="category-list" class="category-list">
+                        <!-- Categories will be populated here -->
+                    </div>
+                </div>
+                
+                <div class="nav-section">
+                    <div class="nav-section-title">Biblioteca</div>
+                    <ul class="nav-menu">
+                        <li class="nav-item" data-view="favorites">
+                            <span class="nav-icon">❤️</span>
+                            <span class="nav-text">Favoritos</span>
+                        </li>
+                        <li class="nav-item" data-view="downloads">
+                            <span class="nav-icon">⬇️</span>
+                            <span class="nav-text">Descargas</span>
+                        </li>
+                        <li class="nav-item" data-view="history">
+                            <span class="nav-icon">📜</span>
+                            <span class="nav-text">Historial</span>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <button class="settings-btn" id="settings-btn">
+                    <span class="nav-icon">⚙️</span>
+                    <span class="nav-text">Configuración</span>
+                </button>
+            </div>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="main-header">
+                <div class="header-left">
+                    <button class="menu-toggle" id="menu-toggle">☰</button>
+                    <div class="breadcrumb" id="breadcrumb">
+                        <span class="breadcrumb-item" data-path="root">Inicio</span>
+                    </div>
+                </div>
+                
+                <div class="header-center">
+                    <div class="search-container">
+                        <input type="text" class="search-input" id="search-input" 
+                               placeholder="Buscar películas, series, cursos...">
+                        <button class="search-btn" id="search-btn">🔍</button>
+                    </div>
+                </div>
+                
+                <div class="header-right">
+                    <button class="header-btn" id="downloads-btn" title="Descargas">
+                        <span>⬇️</span>
+                        <span class="badge" id="download-count">0</span>
+                    </button>
+                    <button class="header-btn" id="refresh-btn" title="Actualizar">
+                        <span>🔄</span>
+                    </button>
+                </div>
+            </header>
+            
+            <!-- Content Area -->
+            <div class="content-area" id="content-area">
+                <!-- Welcome Screen -->
+                <div class="welcome-screen" id="welcome-screen">
+                    <div class="welcome-content">
+                        <div class="welcome-icon">🎬</div>
+                        <h1>Bienvenido a Visuales UCLV</h1>
+                        <p>Explora y descarga películas, series, documentales y más</p>
+                        <div class="quick-categories" id="quick-categories">
+                            <!-- Quick access categories will be populated here -->
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Browser View -->
+                <div class="browser-view hidden" id="browser-view">
+                    <div class="browser-toolbar">
+                        <button class="toolbar-btn" id="back-btn" disabled>← Atrás</button>
+                        <button class="toolbar-btn" id="forward-btn" disabled>Adelante →</button>
+                        <button class="toolbar-btn" id="up-btn">↑ Subir</button>
+                        <button class="toolbar-btn" id="home-btn">🏠 Inicio</button>
+                        <div class="view-toggle">
+                            <button class="view-btn active" data-view="grid" title="Vista de cuadrícula">⊞</button>
+                            <button class="view-btn" data-view="list" title="Vista de lista">☰</button>
+                        </div>
+                    </div>
+                    
+                    <div class="items-container" id="items-container">
+                        <div class="items-grid" id="items-grid">
+                            <!-- Items will be populated here -->
+                        </div>
+                        
+                        <div class="loading-overlay hidden" id="loading">
+                            <div class="spinner"></div>
+                            <p>Cargando contenido...</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Favorites View -->
+                <div class="library-view hidden" id="favorites-view">
+                    <h2>❤️ Mis Favoritos</h2>
+                    <div class="items-grid" id="favorites-grid">
+                        <!-- Favorites will be populated here -->
+                    </div>
+                </div>
+                
+                <!-- Downloads View -->
+                <div class="library-view hidden" id="downloads-view">
+                    <h2>⬇️ Descargas</h2>
+                    <div class="downloads-list" id="downloads-list">
+                        <!-- Downloads will be populated here -->
+                    </div>
+                </div>
+                
+                <!-- History View -->
+                <div class="library-view hidden" id="history-view">
+                    <h2>📜 Historial</h2>
+                    <div class="history-list" id="history-list">
+                        <!-- History will be populated here -->
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <!-- Modal for File Details -->
+    <div class="modal hidden" id="file-modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" id="modal-close">×</button>
+            <div class="modal-header">
+                <h2 id="modal-title">Detalles del archivo</h2>
+            </div>
+            <div class="modal-body" id="modal-body">
+                <!-- Modal content will be populated here -->
+            </div>
+            <div class="modal-footer" id="modal-footer">
+                <!-- Action buttons will be populated here -->
+            </div>
+        </div>
+    </div>
+    
+    <!-- Settings Modal -->
+    <div class="modal hidden" id="settings-modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content settings-modal">
+            <button class="modal-close" id="settings-close">×</button>
+            <div class="modal-header">
+                <h2>⚙️ Configuración</h2>
+            </div>
+            <div class="modal-body">
+                <div class="settings-section">
+                    <h3>Ubicación de descargas</h3>
+                    <div class="setting-row">
+                        <span id="current-download-path">/Downloads/VisualesUCLV</span>
+                        <button class="btn btn-secondary" id="change-download-path">Cambiar</button>
+                    </div>
+                </div>
+                <div class="settings-section">
+                    <h3> apariencia</h3>
+                    <div class="setting-row">
+                        <span>Tema oscuro</span>
+                        <label class="switch">
+                            <input type="checkbox" id="theme-toggle" checked disabled>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="settings-section">
+                    <h3>Acerca de</h3>
+                    <p class="about-text">Visuales UCLV Desktop v1.0.0</p>
+                    <p class="about-text">Explora el contenido de visuales.uclv.cu</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Download Progress Modal -->
+    <div class="modal hidden" id="download-modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content download-modal">
+            <div class="modal-header">
+                <h2>⬇️ Descargando</h2>
+            </div>
+            <div class="modal-body">
+                <div class="download-info">
+                    <p id="download-filename">Archivo</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress-fill"></div>
+                    </div>
+                    <p class="progress-text" id="progress-text">0% - 0 MB / 0 MB</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Video Player Modal -->
+    <div class="modal hidden" id="video-modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content video-modal">
+            <button class="modal-close" id="video-close">×</button>
+            <div class="video-container">
+                <video id="video-player" controls>
+                    <p>Tu navegador no soporta el elemento de video.</p>
+                </video>
+            </div>
+            <div class="video-info">
+                <h3 id="video-title">Título del video</h3>
+                <div class="video-controls-extra">
+                    <button class="btn btn-secondary" id="video-download">⬇️ Descargar</button>
+                    <button class="btn btn-secondary" id="video-fullscreen">⛶ Pantalla completa</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Series Detail Modal -->
+    <div class="modal hidden" id="series-modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content series-modal">
+            <button class="modal-close" id="series-close">×</button>
+            <div class="series-header">
+                <h2 id="series-title">Nombre de la Serie</h2>
+            </div>
+            <div class="series-body" id="series-body">
+                <!-- Series episodes will be populated here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
