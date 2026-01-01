@@ -1,0 +1,181 @@
+/* ========================================
+   VIDEO PLAYER & SERIES MODAL STYLES
+   Added to enhance Visuales UCLV App
+   ======================================== */
+
+/* Video Player Modal */
+.video-modal {
+    max-width: 900px;
+    width: 95%;
+    background: var(--bg-medium);
+}
+
+.video-container {
+    width: 100%;
+    background: #000;
+    border-radius: var(--radius-md) var(--radius-md) 0 0;
+    overflow: hidden;
+}
+
+.video-container video {
+    width: 100%;
+    max-height: 60vh;
+    display: block;
+}
+
+.video-info {
+    padding: 16px 24px;
+    border-top: 1px solid var(--border-color);
+}
+
+.video-info h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: var(--text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.video-controls-extra {
+    display: flex;
+    gap: 12px;
+}
+
+.video-controls-extra .btn {
+    flex: 1;
+}
+
+/* Series Modal */
+.series-modal {
+    max-width: 700px;
+    width: 95%;
+    max-height: 80vh;
+}
+
+.series-header {
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--border-color);
+    background: var(--bg-dark);
+}
+
+.series-header h2 {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.series-body {
+    padding: 20px 24px;
+    overflow-y: auto;
+    max-height: 60vh;
+}
+
+.series-season {
+    margin-bottom: 24px;
+}
+
+.series-season-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.episode-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.episode-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    background: var(--bg-card);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    border: 1px solid transparent;
+}
+
+.episode-item:hover {
+    background: var(--bg-hover);
+    border-color: var(--primary-color);
+}
+
+.episode-number {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    font-size: 12px;
+    font-weight: 600;
+    flex-shrink: 0;
+}
+
+.episode-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.episode-title {
+    font-size: 14px;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.episode-meta {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 2px;
+}
+
+.episode-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.episode-btn {
+    padding: 6px 12px;
+    background: var(--bg-dark);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    color: var(--text-secondary);
+    font-size: 12px;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.episode-btn:hover {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white;
+}
+
+/* Empty & Error Messages */
+.empty-message,
+.error-message {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--text-muted);
+}
+
+.empty-message p,
+.error-message p {
+    margin-bottom: 8px;
+}
+
+.error-message {
+    color: var(--error-color);
+}
